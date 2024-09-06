@@ -25,10 +25,10 @@ class Request:
             "Authorization": f"Token {key}"
         }
 
-        link = f'https://plus.character.ai/{url}'
+        link = f'https://old.character.ai/{url}'
 
         if neo:
-            link = link.replace('plus', 'neo')
+            link = link.replace('old', 'neo')
 
         if multipart != None:
             r = self.session.post(
