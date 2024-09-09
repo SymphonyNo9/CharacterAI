@@ -35,7 +35,7 @@ class ChatV1(Request):
             :obj:`~characterai.types.chat1.Message`
         """
         data = self.request(
-            'chat/streaming/', token=token, old=True,
+            'chat/streaming/', token=token,
             data={
                 'history_external_id': chat_id,
                 'text': text,
