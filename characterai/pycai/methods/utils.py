@@ -32,6 +32,7 @@ class Request:
             link = link.replace('plus', 'neo')
         if old:
             link = link.replace('plus', 'old')
+        print(link)
 
         if multipart != None:
             r = self.session.post(

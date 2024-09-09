@@ -71,7 +71,7 @@ class ChatV1(Request):
         """
         data = self.request(
             'chat/history/continue/',
-            token=token, old=True, data={
+            token=token, data={
                 'character_external_id': char_id,
                 'history_external_id': chat_id
             }
@@ -100,7 +100,7 @@ class ChatV1(Request):
         """
         data = self.request(
             'chat/history/create/',
-            token=token, old=True, data={
+            token=token, data={
                 'character_external_id': char_id
             }
         )
@@ -144,7 +144,7 @@ class ChatV1(Request):
         return chat1.Message.model_validate(
             self.request(
                 'chat/streaming/',
-                token=token, old=True, data={
+                token=token, data={
                     'history_external_id': chat_id,
                     'parent_msg_uuid': parent_msg_uuid,
                     'tgt': tgt,
@@ -176,7 +176,7 @@ class ChatV1(Request):
         """
         data = self.request(
             'chat/character/histories_v2/',
-            token=token, old=True, data={
+            token=token, data={
                 'external_id': char,
                 'number': num
             }
@@ -208,7 +208,7 @@ class ChatV1(Request):
         data = self.request(
             'chat/history/msgs/user/?'
             'history_external_id='
-            f'{chat_id}', old=True, token=token
+            f'{chat_id}', token=token
         )
 
         return chat1.HisMessages.model_validate(
@@ -238,7 +238,7 @@ class ChatV1(Request):
         """
         self.request(
             'chat/history/msgs/delete/',
-            token=token, old=True, data={
+            token=token, data={
                 'history_id': chat_id,
                 'uuids_to_delete': uuids
             }
