@@ -14,6 +14,7 @@ class Request:
         self, url: str, *, token: str = None,
         method: str = 'GET', data: dict = {},
         split: bool = False, neo: bool = False,
+        old = False,
         multipart: CurlMime = None
     ):
         key = self.token or token
@@ -25,10 +26,12 @@ class Request:
             "Authorization": f"Token {key}"
         }
 
-        link = f'https://old.character.ai/{url}'
+        link = f'https://plus.character.ai/{url}'
 
         if neo:
-            link = link.replace('old', 'neo')
+            link = link.replace('plus', 'neo')
+        if old:
+            link = link.replace('plus', 'old')
 
         if multipart != None:
             r = self.session.post(
